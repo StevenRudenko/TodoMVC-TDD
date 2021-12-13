@@ -5,8 +5,10 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   const addTask = () => {
-    setTasks([text, ...tasks]);
-    setText("");
+    if (text) {
+      setTasks([text, ...tasks]);
+      setText("");
+    }
   };
 
   return (
