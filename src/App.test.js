@@ -55,3 +55,13 @@ test("multiple tasks can be added", () => {
   const { tasks } = refresh();
   expect(tasks.length).toBe(2);
 });
+
+test("new tasks are added to the top", () => {
+  const { input, plusButton } = setup();
+  userEvent.type(input, "new task 1");
+  userEvent.click(plusButton);
+  userEvent.type(input, "new task 2");
+  userEvent.click(plusButton);
+  const { tasks } = refresh();
+  expect(tasks[0].textContent).toBe("new task 2");
+});
