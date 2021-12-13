@@ -15,8 +15,10 @@ const setup = () => {
 
 const refresh = () => {
   const tasks = screen.queryAllByTestId("task");
+  const checkboxes = screen.queryAllByTestId("completed");
   return {
     tasks,
+    checkboxes,
   };
 };
 
@@ -71,4 +73,13 @@ test("new task should not be generated if input is empty", () => {
   userEvent.click(plusButton);
   const { tasks } = refresh();
   expect(tasks.length).toBe(0);
+});
+
+test("task should have a checkbox", () => {
+  const taskText = "new tasks";
+  const { input, plusButton } = setup();
+  userEvent.type(input, taskText);
+  userEvent.click(plusButton);
+  const { checkboxes } = refresh();
+  expect(checkboxes[0]).toBeInTheDocument();
 });
