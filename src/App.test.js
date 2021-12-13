@@ -13,6 +13,13 @@ const setup = () => {
   };
 };
 
+const refresh = () => {
+  const tasks = screen.queryAllByTestId("task");
+  return {
+    tasks,
+  };
+};
+
 test("render task input", () => {
   const { input } = setup();
   expect(input).toBeInTheDocument();
@@ -21,4 +28,11 @@ test("render task input", () => {
 test("render plus button", () => {
   const { plusButton } = setup();
   expect(plusButton).toBeInTheDocument();
+});
+
+test("task generated on plus button click", () => {
+  const { plusButton } = setup();
+  userEvent.click(plusButton);
+  const { tasks } = refresh();
+  expect(tasks[0]).toBeInTheDocument();
 });
