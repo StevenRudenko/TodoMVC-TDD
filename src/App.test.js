@@ -65,3 +65,10 @@ test("new tasks are added to the top", () => {
   const { tasks } = refresh();
   expect(tasks[0].textContent).toBe("new task 2");
 });
+
+test("new task should not be generated if input is empty", () => {
+  const { plusButton } = setup();
+  userEvent.click(plusButton);
+  const { tasks } = refresh();
+  expect(tasks.length).toBe(0);
+});

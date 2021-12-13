@@ -65,6 +65,7 @@ This part covers the application step-by-step implementation using TDD methodolo
 1. Input text is cleared on new task added
 1. Multiple tasks can be added
 1. New task should be added to the top
+1. Input should be cleared on new tasks added
 1. Task has a checkbox
 
 ## Work in pairs
