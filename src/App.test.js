@@ -15,3 +15,8 @@ test("render task input", () => {
   const { input } = setup();
   expect(input).toBeInTheDocument();
 });
+
+test("render plus button", () => {
+  const { plusButton } = setup();
+  expect(plusButton).toBeInTheDocument();
+});
