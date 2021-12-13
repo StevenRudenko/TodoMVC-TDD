@@ -24,6 +24,7 @@ function App() {
       {tasks.map((task, i) => (
         <div key={`task-${i}`} data-testid="task">
           {task}
+          <input type="checkbox" data-testid="completed" />
         </div>
       ))}
     </div>
