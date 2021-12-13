@@ -30,9 +30,11 @@ test("render plus button", () => {
   expect(plusButton).toBeInTheDocument();
 });
 
-test("task generated on plus button click", () => {
-  const { plusButton } = setup();
+test("task text generated is valid", () => {
+  const taskText = "new tasks";
+  const { input, plusButton } = setup();
+  userEvent.type(input, taskText);
   userEvent.click(plusButton);
   const { tasks } = refresh();
-  expect(tasks[0]).toBeInTheDocument();
+  expect(tasks[0].textContent).toBe(taskText);
 });
