@@ -2,10 +2,10 @@ import { useState } from "react";
 
 function App() {
   const [text, setText] = useState("");
-  const [task, setTask] = useState();
+  const [tasks, setTasks] = useState([]);
 
   const addTask = () => {
-    setTask(text);
+    setTasks([...tasks, text]);
     setText("");
   };
 
@@ -19,7 +19,11 @@ function App() {
       <button data-testid="plus-button" onClick={addTask}>
         +
       </button>
-      {task && <div data-testid="task">{task}</div>}
+      {tasks.map((task, i) => (
+        <div key={`task-${i}`} data-testid="task">
+          {task}
+        </div>
+      ))}
     </div>
   );
 }
