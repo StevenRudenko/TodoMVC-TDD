@@ -5,8 +5,10 @@ import App from "./App";
 const setup = () => {
   const utils = render(<App />);
   const input = screen.queryByTestId("task-input");
+  const plusButton = screen.queryByTestId("plus-button");
   return {
     input,
+    plusButton,
     ...utils,
   };
 };
