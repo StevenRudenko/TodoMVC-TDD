@@ -45,3 +45,13 @@ test("input should be cleared after new task added", () => {
   userEvent.click(plusButton);
   expect(input.value).toBe("");
 });
+
+test("multiple tasks can be added", () => {
+  const { input, plusButton } = setup();
+  userEvent.type(input, "new task");
+  userEvent.click(plusButton);
+  userEvent.type(input, "new task");
+  userEvent.click(plusButton);
+  const { tasks } = refresh();
+  expect(tasks.length).toBe(2);
+});
