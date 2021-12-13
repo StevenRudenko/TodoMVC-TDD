@@ -2,6 +2,12 @@ import { useState } from "react";
 
 function App() {
   const [text, setText] = useState("");
+  const [task, setTask] = useState();
+
+  const addTask = () => {
+    setTask(text);
+    setText("");
+  };
 
   return (
     <div className="App">
@@ -10,8 +16,10 @@ function App() {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button data-testid="plus-button">+</button>
-      {text && <div data-testid="task">{text}</div>}
+      <button data-testid="plus-button" onClick={addTask}>
+        +
+      </button>
+      {task && <div data-testid="task">{task}</div>}
     </div>
   );
 }
